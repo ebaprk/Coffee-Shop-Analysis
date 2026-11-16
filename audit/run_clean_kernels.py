@@ -1,4 +1,5 @@
-"""Execute originals unchanged in a fresh project-venv kernel per notebook."""
+"""Execute each notebook in a fresh kernel and reconcile its financial outputs."""
+import argparse
 import base64
 import hashlib
 import json
@@ -12,6 +13,11 @@ from jupyter_client import KernelManager
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "audit"
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument("--write-notebooks", action="store_true", help="Save successful fresh outputs into the original notebooks.")
+args = parser.parse_args()
+for folder in (OUT / "charts", OUT / "executed"):
+    folder.mkdir(parents=True, exist_ok=True)
 os.environ["MPLCONFIGDIR"] = "/private/tmp/coffee-audit-matplotlib"
 os.environ["IPYTHONDIR"] = "/private/tmp/coffee-audit-ipython"
 os.environ["JUPYTER_RUNTIME_DIR"] = "/private/tmp/coffee-audit-jupyter"
@@ -61,7 +67,7 @@ for path in sorted((ROOT / "notebook").glob("*.ipynb")):
     manager = KernelManager(connection_file=str(OUT / f".{path.stem}-kernel.json"))
     manager.kernel_spec.argv = [sys.executable, "-m", "ipykernel_launcher", "-f", "{connection_file}"]
     started = time.monotonic()
-    manager.start_kernel(cwd=str(ROOT / "notebook"), env=dict(os.environ))
+    manager.start_kernel(cwd=str(ROOT), env=dict(os.environ))
     client = manager.client()
     client.start_channels()
     result = {"notebook": path.name, "sha256": original_hash, "cells": [], "errors": []}
@@ -95,6 +101,8 @@ import json as _json
 from pathlib import Path as _Path
 _audit = _Path({str(OUT)!r})
 _expected = _json.loads((_audit / "verification_results.json").read_text())
+import hashlib as _hashlib
+assert _hashlib.sha256((_audit.parent / "data" / "Coffee Shop Sales.xlsx").read_bytes()).hexdigest() == _expected["dataset_sha256"]
 assert len(df) == _expected["rows"]
 assert df["transaction_id"].nunique() == _expected["transaction_ids"]
 assert df["transaction_qty"].sum() == _expected["total_units"]
@@ -112,10 +120,14 @@ for _name, _series in [("detail", products_by_revenue), ("category", revenue_by_
 _ref = pd.read_csv(_audit / "monthly_metrics.csv", index_col=0)["revenue"]
 assert all(abs(by_month.loc[pd.Period(k)] - v) < 1e-6 for k,v in _ref.items())
 _ref = pd.read_csv(_audit / "weekday_metrics.csv", index_col=0)["total_revenue"]
-pd.testing.assert_series_equal(by_weekday.sort_index(), _ref.sort_index(), check_names=False, check_dtype=False, atol=1e-6, rtol=0)
+_actual_weekday = by_weekday.set_index("weekday")
+pd.testing.assert_series_equal(_actual_weekday["total revenue"].sort_index(), _ref.sort_index(), check_names=False, check_dtype=False, atol=1e-6, rtol=0)
+_weekday_ref = pd.read_csv(_audit / "weekday_metrics.csv", index_col=0)
+pd.testing.assert_series_equal(_actual_weekday["day count"].sort_index(), _weekday_ref["observed_days"].sort_index(), check_names=False, check_dtype=False)
+pd.testing.assert_series_equal(_actual_weekday["revenue per day"].sort_index(), _weekday_ref["mean_daily_revenue"].sort_index(), check_names=False, check_dtype=False, atol=1e-6, rtol=0)
 _hourref = pd.read_csv(_audit / "hourly_metrics.csv")
 assert store_hour.set_index(["store_location", "time_of_day"])["transactions"].to_dict() == _hourref.set_index(["store_location", "hour"])["transactions"].to_dict()
-assert by_hour.to_dict() == _hourref.groupby("hour")["units"].sum().to_dict()
+assert units_by_hour.to_dict() == _hourref.groupby("hour")["units"].sum().to_dict()
 pd.testing.assert_series_equal(rev_by_hour.sort_index(), _hourref.groupby("hour")["revenue"].sum().sort_index(), check_names=False, check_dtype=False, atol=1e-6, rtol=0)
 ''',
             "03_visualization.ipynb": '''
@@ -123,8 +135,14 @@ _ref = pd.read_csv(_audit / "monthly_metrics.csv", index_col=0)["revenue"]
 assert all(abs(total_revenue_monthly.loc[pd.Period(k)] - v) < 1e-6 for k,v in _ref.items())
 _ref = pd.read_csv(_audit / "store_metrics.csv", index_col=0)["revenue"]
 pd.testing.assert_series_equal(revenue_by_location.sort_index(), _ref.sort_index(), check_names=False, check_dtype=False, atol=1e-6, rtol=0)
-_ref = pd.read_csv(_audit / "revenue_by_type.csv", index_col=0)["revenue"]
+_ref = pd.read_csv(_audit / "revenue_by_detail.csv", index_col=0)["revenue"].nlargest(10)
 pd.testing.assert_series_equal(revenue_by_product.sort_index(), _ref.sort_index(), check_names=False, check_dtype=False, atol=1e-6, rtol=0)
+assert len(revenue_by_product) == 10
+_monthly_ref = pd.read_csv(_audit / "monthly_metrics.csv")
+assert monthly_comparison["month"].is_monotonic_increasing
+assert monthly_comparison["calendar_days"].tolist() == _monthly_ref["observed_days"].tolist()
+for _column, _reference in [("revenue_per_day", "revenue_per_day"), ("revenue_change_pct", "revenue_growth_pct"), ("daily_revenue_change_pct", "daily_revenue_growth_pct")]:
+    pd.testing.assert_series_equal(monthly_comparison[_column].reset_index(drop=True), _monthly_ref[_reference], check_names=False, check_dtype=False, atol=1e-6, rtol=0)
 _ref = pd.read_csv(_audit / "hourly_metrics.csv")
 assert store_hour.set_index(["store_location", "time_of_day"])["transactions"].to_dict() == _ref.set_index(["store_location", "hour"])["transactions"].to_dict()
 _ref = pd.read_csv(_audit / "revenue_by_category.csv", index_col=0)["revenue"]
@@ -137,6 +155,8 @@ pd.testing.assert_series_equal(temp["percentage"].sort_index(), (_ref/_ref.sum()
             result["reconciliation_outputs"] = probe_outputs
             result["errors"].extend({"cell": "audit reconciliation", **o} for o in probe_outputs if o["output_type"] == "error")
         (OUT / "executed" / path.name).write_text(json.dumps(notebook, indent=1) + "\n")
+        if args.write_notebooks and not result["errors"]:
+            path.write_text(json.dumps(notebook, indent=1) + "\n")
     finally:
         client.stop_channels()
         manager.shutdown_kernel(now=True)

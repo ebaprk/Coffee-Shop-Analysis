@@ -1,7 +1,7 @@
 [
   {
     "notebook": "01_exploration.ipynb",
-    "sha256": "7506dd3da01698966b6e61e13d52626487b74067e0e4f195f241a8ac46764465",
+    "sha256": "2f091931ff449ed2753559404b4fae2e63e533f09c9af33abfdf099a02b07db0",
     "cells": [
       {
         "cell": 2,
@@ -27,12 +27,12 @@
         "text": "Kernel-state reconciliation passed\n"
       }
     ],
-    "seconds": 6.74,
-    "original_unchanged": true
+    "seconds": 6.79,
+    "original_unchanged": false
   },
   {
     "notebook": "02_sales_analysis.ipynb",
-    "sha256": "6997a73c6804d88fea6b07a7f23ae4e53abc2e5d16e3b14333f9577ae3d497d3",
+    "sha256": "107d00c2d0961a5d3435896fa43a1f057b44d202e9c854150af8727baa9dc96f",
     "cells": [
       {
         "cell": 2,
@@ -113,12 +113,12 @@
         "text": "Kernel-state reconciliation passed\n"
       }
     ],
-    "seconds": 6.61,
-    "original_unchanged": true
+    "seconds": 6.56,
+    "original_unchanged": false
   },
   {
     "notebook": "03_visualization.ipynb",
-    "sha256": "99a22e0cd4f70ea1e9f3b31e05ec0741c058a986720f64d3c4e50831b0e672e4",
+    "sha256": "92459de4c8444c15b597f7bb6a6209971a35030c6484d36317f2e14de839d39b",
     "cells": [
       {
         "cell": 3,
@@ -131,23 +131,28 @@
         "errors": 0
       },
       {
-        "cell": 7,
+        "cell": 5,
         "execution_count": 4,
         "errors": 0
       },
       {
-        "cell": 10,
+        "cell": 8,
         "execution_count": 5,
         "errors": 0
       },
       {
-        "cell": 13,
+        "cell": 11,
         "execution_count": 6,
         "errors": 0
       },
       {
-        "cell": 16,
+        "cell": 14,
         "execution_count": 7,
+        "errors": 0
+      },
+      {
+        "cell": 17,
+        "execution_count": 8,
         "errors": 0
       }
     ],
@@ -159,7 +164,7 @@
         "text": "Kernel-state reconciliation passed\n"
       }
     ],
-    "seconds": 6.94,
-    "original_unchanged": true
+    "seconds": 6.58,
+    "original_unchanged": false
   }
 ]
