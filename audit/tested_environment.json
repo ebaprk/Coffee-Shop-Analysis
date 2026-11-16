@@ -1,0 +1,12 @@
+{
+  "python": "3.12.13 (main, Mar  3 2026, 12:39:30) [Clang 21.0.0 (clang-2100.0.123.102)]",
+  "packages": {
+    "pandas": "3.1.1",
+    "numpy": "2.5.4",
+    "openpyxl": "3.1.5",
+    "matplotlib": "3.11.2",
+    "seaborn": "0.13.2",
+    "ipykernel": "7.4.0",
+    "jupyter_client": "8.10.0"
+  }
+}

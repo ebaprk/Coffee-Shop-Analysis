@@ -1,0 +1,165 @@
+[
+  {
+    "notebook": "01_exploration.ipynb",
+    "sha256": "7506dd3da01698966b6e61e13d52626487b74067e0e4f195f241a8ac46764465",
+    "cells": [
+      {
+        "cell": 2,
+        "execution_count": 2,
+        "errors": 0
+      },
+      {
+        "cell": 3,
+        "execution_count": 3,
+        "errors": 0
+      },
+      {
+        "cell": 5,
+        "execution_count": 4,
+        "errors": 0
+      }
+    ],
+    "errors": [],
+    "reconciliation_outputs": [
+      {
+        "output_type": "stream",
+        "name": "stdout",
+        "text": "Kernel-state reconciliation passed\n"
+      }
+    ],
+    "seconds": 6.74,
+    "original_unchanged": true
+  },
+  {
+    "notebook": "02_sales_analysis.ipynb",
+    "sha256": "6997a73c6804d88fea6b07a7f23ae4e53abc2e5d16e3b14333f9577ae3d497d3",
+    "cells": [
+      {
+        "cell": 2,
+        "execution_count": 2,
+        "errors": 0
+      },
+      {
+        "cell": 3,
+        "execution_count": 3,
+        "errors": 0
+      },
+      {
+        "cell": 4,
+        "execution_count": 4,
+        "errors": 0
+      },
+      {
+        "cell": 5,
+        "execution_count": 5,
+        "errors": 0
+      },
+      {
+        "cell": 6,
+        "execution_count": 6,
+        "errors": 0
+      },
+      {
+        "cell": 8,
+        "execution_count": 7,
+        "errors": 0
+      },
+      {
+        "cell": 9,
+        "execution_count": 8,
+        "errors": 0
+      },
+      {
+        "cell": 10,
+        "execution_count": 9,
+        "errors": 0
+      },
+      {
+        "cell": 11,
+        "execution_count": 10,
+        "errors": 0
+      },
+      {
+        "cell": 13,
+        "execution_count": 11,
+        "errors": 0
+      },
+      {
+        "cell": 14,
+        "execution_count": 12,
+        "errors": 0
+      },
+      {
+        "cell": 15,
+        "execution_count": 13,
+        "errors": 0
+      },
+      {
+        "cell": 16,
+        "execution_count": 14,
+        "errors": 0
+      },
+      {
+        "cell": 17,
+        "execution_count": 15,
+        "errors": 0
+      }
+    ],
+    "errors": [],
+    "reconciliation_outputs": [
+      {
+        "output_type": "stream",
+        "name": "stdout",
+        "text": "Kernel-state reconciliation passed\n"
+      }
+    ],
+    "seconds": 6.61,
+    "original_unchanged": true
+  },
+  {
+    "notebook": "03_visualization.ipynb",
+    "sha256": "99a22e0cd4f70ea1e9f3b31e05ec0741c058a986720f64d3c4e50831b0e672e4",
+    "cells": [
+      {
+        "cell": 3,
+        "execution_count": 2,
+        "errors": 0
+      },
+      {
+        "cell": 4,
+        "execution_count": 3,
+        "errors": 0
+      },
+      {
+        "cell": 7,
+        "execution_count": 4,
+        "errors": 0
+      },
+      {
+        "cell": 10,
+        "execution_count": 5,
+        "errors": 0
+      },
+      {
+        "cell": 13,
+        "execution_count": 6,
+        "errors": 0
+      },
+      {
+        "cell": 16,
+        "execution_count": 7,
+        "errors": 0
+      }
+    ],
+    "errors": [],
+    "reconciliation_outputs": [
+      {
+        "output_type": "stream",
+        "name": "stdout",
+        "text": "Kernel-state reconciliation passed\n"
+      }
+    ],
+    "seconds": 6.94,
+    "original_unchanged": true
+  }
+]

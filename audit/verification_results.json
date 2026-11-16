@@ -1,0 +1,193 @@
+{
+  "dataset_sha256": "287d06d19f7a832d48f1deea7b149836fb32d591010f060bdcf8d1959653bfe1",
+  "rows": 149116,
+  "columns_original": 11,
+  "total_revenue_decimal": "698812.33",
+  "total_units": 214470,
+  "transaction_ids": 149116,
+  "missing_cells": 0,
+  "duplicate_rows": 0,
+  "duplicate_ids": 0,
+  "nonpositive_quantities": 0,
+  "fractional_quantities": 0,
+  "nonpositive_prices": 0,
+  "date_range": [
+    "2023-01-01 00:00:00",
+    "2023-06-30 00:00:00"
+  ],
+  "calendar_days": 181,
+  "missing_store_dates": 0,
+  "product_ids": 80,
+  "product_details": 80,
+  "product_types": 29,
+  "inconsistent_product_id_mappings": {
+    "9": {
+      "product_detail": 1,
+      "product_type": 1,
+      "product_category": 1,
+      "unit_price": 4
+    },
+    "69": {
+      "product_detail": 1,
+      "product_type": 1,
+      "product_category": 1,
+      "unit_price": 2
+    },
+    "70": {
+      "product_detail": 1,
+      "product_type": 1,
+      "product_category": 1,
+      "unit_price": 2
+    },
+    "71": {
+      "product_detail": 1,
+      "product_type": 1,
+      "product_category": 1,
+      "unit_price": 2
+    },
+    "72": {
+      "product_detail": 1,
+      "product_type": 1,
+      "product_category": 1,
+      "unit_price": 3
+    },
+    "73": {
+      "product_detail": 1,
+      "product_type": 1,
+      "product_category": 1,
+      "unit_price": 2
+    },
+    "74": {
+      "product_detail": 1,
+      "product_type": 1,
+      "product_category": 1,
+      "unit_price": 2
+    },
+    "75": {
+      "product_detail": 1,
+      "product_type": 1,
+      "product_category": 1,
+      "unit_price": 2
+    },
+    "76": {
+      "product_detail": 1,
+      "product_type": 1,
+      "product_category": 1,
+      "unit_price": 2
+    },
+    "78": {
+      "product_detail": 1,
+      "product_type": 1,
+      "product_category": 1,
+      "unit_price": 2
+    },
+    "79": {
+      "product_detail": 1,
+      "product_type": 1,
+      "product_category": 1,
+      "unit_price": 2
+    },
+    "81": {
+      "product_detail": 1,
+      "product_type": 1,
+      "product_category": 1,
+      "unit_price": 2
+    },
+    "82": {
+      "product_detail": 1,
+      "product_type": 1,
+      "product_category": 1,
+      "unit_price": 2
+    },
+    "83": {
+      "product_detail": 1,
+      "product_type": 1,
+      "product_category": 1,
+      "unit_price": 2
+    },
+    "87": {
+      "product_detail": 1,
+      "product_type": 1,
+      "product_category": 1,
+      "unit_price": 2
+    }
+  },
+  "inconsistent_store_id_mapping": 0,
+  "minimum_id": 1,
+  "maximum_id": 149456,
+  "missing_sequential_ids": 340,
+  "reconciliations": [
+    {
+      "aggregation": "store",
+      "groups": 3,
+      "passed": true
+    },
+    {
+      "aggregation": "month",
+      "groups": 6,
+      "passed": true
+    },
+    {
+      "aggregation": "weekday",
+      "groups": 7,
+      "passed": true
+    },
+    {
+      "aggregation": "hour",
+      "groups": 15,
+      "passed": true
+    },
+    {
+      "aggregation": "category",
+      "groups": 9,
+      "passed": true
+    },
+    {
+      "aggregation": "detail",
+      "groups": 80,
+      "passed": true
+    },
+    {
+      "aggregation": "type",
+      "groups": 29,
+      "passed": true
+    },
+    {
+      "aggregation": "store_hour",
+      "groups": 43,
+      "passed": true
+    },
+    {
+      "aggregation": "store_month",
+      "groups": 18,
+      "passed": true
+    },
+    {
+      "aggregation": "store_product",
+      "groups": 239,
+      "passed": true
+    }
+  ],
+  "peak_to_11": {
+    "Lower Manhattan": {
+      "ten": 6297,
+      "eleven": 2755,
+      "decline": 3542,
+      "decline_pct": 56.24900746387169
+    },
+    "Hell's Kitchen": {
+      "ten": 6957,
+      "eleven": 3598,
+      "decline": 3359,
+      "decline_pct": 48.282305591490584
+    },
+    "Astoria": {
+      "ten": 5291,
+      "eleven": 3413,
+      "decline": 1878,
+      "decline_pct": 35.4942354942355
+    }
+  },
+  "morning_share_8_to_11_exclusive": 36.188604844550554,
+  "morning_share_7_to_11_exclusive": 45.19367472303442
+}
