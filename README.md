@@ -2,6 +2,21 @@
 
 A Python analysis of sales, product performance, and recorded transaction activity at three fictional New York City coffee shops. The project uses Pandas, Matplotlib, and Seaborn to turn transaction records into business findings with explicit limitations.
 
+## Start here
+
+- [Executive summary](reports/executive_summary.md): findings, recommendations, and limits.
+- [Exploration notebook](notebook/01_exploration.ipynb): begin the reproducible analysis.
+- [Verification notes](audit/README.md): independent dataset and notebook checks.
+
+To obtain a working copy:
+
+```sh
+git clone https://github.com/ebaprk/Coffee-Shop-Analysis.git
+cd Coffee-Shop-Analysis
+```
+
+Then follow **Reproduce the analysis** below. The workbook and saved charts are included.
+
 ## Business objective
 
 Identify which products, locations, and time periods contribute most to sales, and explain what the evidence supports about inventory and service planning.
