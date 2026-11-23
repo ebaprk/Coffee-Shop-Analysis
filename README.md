@@ -116,3 +116,9 @@ requirements.txt              Tested direct dependencies
 ```
 
 The [initial audit](audit/PORTFOLIO_AUDIT.md) is a historical review of the earlier version. Its original issue descriptions are retained for context; the current notebooks and executive summary contain the corrected findings. See [audit notes](audit/README.md) for the verification workflow.
+
+## License
+
+Original software and documentation are licensed under the [Apache License 2.0](LICENSE). See [NOTICE](NOTICE) for copyright, attribution, and the scope of this grant. Third-party materials retain their own terms.
+
+The Maven Analytics workbook and source data are excluded from the software license and retain the provider’s terms.

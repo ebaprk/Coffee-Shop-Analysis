@@ -1,0 +1,10 @@
+Coffee Shop Sales Analysis
+https://github.com/ebaprk/Coffee-Shop-Analysis
+
+Copyright 2026 Abe Park
+
+The Apache License, Version 2.0 in LICENSE applies to original software and documentation contributed by Abe Park, except as identified below. Existing copyright, authorship, attribution, and license notices are retained.
+
+Third-party dependencies, datasets, fonts, images, logos, and other third-party materials retain their own terms. This project's license does not relicense those materials or grant additional rights to them.
+
+The workbook data/Coffee Shop Sales.xlsx is supplied from Maven Analytics' Coffee Shop Sales dataset. The software license does not license that source dataset or grant additional rights to its data. Source attribution and metric definitions remain in README.md. Dataset-derived tabular exports remain subject to the source data's terms.
